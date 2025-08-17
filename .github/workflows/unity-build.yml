@@ -1,0 +1,19 @@
+name: Unity Build (Test on Push)
+
+on:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Unity Builderを使ってビルド
+      - name: Build project
+        uses: game-ci/unity-builder@v4
+        with:
+          unityVersion: 6000.1.15f1   # プロジェクトに合わせる
+          targetPlatform: StandaloneWindows64  # 出力先 (例: Windows64)
